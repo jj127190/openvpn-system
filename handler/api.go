@@ -1,7 +1,7 @@
 package handler
 
 import (
-	"VpnAudit/dao"
+	"openvpn-system/dao"
 
 	"fmt"
 	"github.com/gin-gonic/gin"

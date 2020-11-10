@@ -1,12 +1,12 @@
 package main
 
 import (
-	"VpnAudit/common/share"
-	// "VpnAudit/common/vpntails"
-	"VpnAudit/dao"
-	"VpnAudit/router"
+	"openvpn-system/common/share"
+	// "openvpopenvpn-system/common/vpntails"
 	"fmt"
 	"github.com/gin-gonic/gin"
+	"openvpn-system/dao"
+	"openvpn-system/router"
 )
 
 func main() {

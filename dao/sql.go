@@ -15,8 +15,7 @@ var GDB *gorm.DB
 
 func init() {
 
-	// dsn := "root:5Lqe6*mTKONu9!hASE3r@tcp(172.30.0.196:22809)/VpnAudit"
-	dsn := "root:8927126@tcp(172.30.0.196:22809)/VpnAudit"
+	dsn := "root:8927126@tcp(127.0.0.1:3306)/openvpensystem"
 	err := initDB(dsn)
 	if err != nil {
 		fmt.Printf("初始化数据库失败......, err:%v\n", err)
@@ -24,7 +23,7 @@ func init() {
 	}
 
 	//gorm
-	gdb, err := gorm.Open("mysql", "root:8927126@(172.30.0.196:22809)/VpnAudit?charset=utf8&parseTime=True&loc=Local")
+	gdb, err := gorm.Open("mysql", "root:8927126@(172.30.0.196:22809)/openvpensystem?charset=utf8&parseTime=True&loc=Local")
 	if err != nil {
 		fmt.Println("gorm conn is fail...")
 		panic(err)

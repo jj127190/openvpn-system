@@ -1,7 +1,7 @@
 package handler
 
 import (
-	"VpnAudit/dao"
+	"openvpn-system/dao"
 
 	"fmt"
 	"github.com/gin-gonic/gin"
@@ -9,7 +9,7 @@ import (
 	// _ "github.com/jinzhu/gorm/dialects/mysql"
 	"net/http"
 	// "reflect"
-	"VpnAudit/common/share"
+	"openvpn-system/common/share"
 	"strconv"
 )
 

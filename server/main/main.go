@@ -2,9 +2,9 @@ package main
 
 import (
 	"fmt"
-	"VpnAudit/router"
-	"VpnAudit/common/share"
 	"github.com/gin-gonic/gin"
+	"openvpn-system/common/share"
+	"openvpn-system/router"
 )
 
 // getcwd  C:\Users\saber\Desktop\资料\go\gopath\src\VpnAudit\server\main

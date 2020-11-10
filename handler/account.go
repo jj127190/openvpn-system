@@ -1,13 +1,13 @@
 package handler
 
 import (
-    "VpnAudit/common/share"
-    "VpnAudit/dao"
     "fmt"
     "github.com/gin-gonic/gin"
     _ "github.com/jinzhu/gorm"
     _ "github.com/jinzhu/gorm/dialects/mysql"
     "net/http"
+    "openvpn-system/common/share"
+    "openvpn-system/dao"
     "strconv"
     "time"
 )

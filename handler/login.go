@@ -1,11 +1,11 @@
 package handler
 
 import (
-	//"VpnAudit/common/share"
-	"VpnAudit/dao"
+	//"openvpn-system/common/share"
 	"fmt"
 	"github.com/gin-gonic/gin"
 	"net/http"
+	"openvpn-system/dao"
 )
 
 // 0表示立即销毁cookie

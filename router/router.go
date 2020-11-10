@@ -2,10 +2,10 @@ package router
 
 import (
 	//"fmt"
-	"VpnAudit/common/middleware"
-	"VpnAudit/common/utils"
-	"VpnAudit/handler"
 	"github.com/gin-gonic/gin"
+	"openvpn-system/common/middleware"
+	"openvpn-system/common/utils"
+	"openvpn-system/handler"
 )
 
 func Distribute(r *gin.Engine) {

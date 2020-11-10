@@ -2,8 +2,8 @@ package main
 
 import (
 	"fmt"
-	"VpnAudit/router"
 	"github.com/gin-gonic/gin"
+	"openvpn-system/router"
 )
 
 func main() {

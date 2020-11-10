@@ -1,9 +1,9 @@
 package logs
 
 import (
-	"VpnAudit/common"
 	"fmt"
 	"github.com/sirupsen/logrus"
+	"openvpn-system/common"
 	"os"
 )
 
@@ -27,7 +27,6 @@ func GetLogInfo(name, path string, file *os.File, log *logrus.Logger) *LogInfo {
 
 func NewLogger(LogName, LogPath string, LogLevel int32) *LogInfo {
 
-	
 	file, err := os.OpenFile(LogPath+LogName, os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0666)
 	if err != nil {
 		fmt.Println("faile to open file...")
@@ -97,4 +96,3 @@ func (l *LogInfo) Warn(rest ...interface{}) {
 func (l *LogInfo) FileClose() {
 	l.FileSystem.Close()
 }
-
