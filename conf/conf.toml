@@ -1,0 +1,13 @@
+[Run]
+StartPort = ":8080"
+
+[LogInfo]
+LogName = "VpnAudit.log"
+LogPath = "./log/" 
+
+# LogStat  on/off  default on
+LogStat = "on"  
+
+# LogLevel 0:debug; 1:info; 2:warning; 4:danger
+LogLevel = 1  
+

@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<script type="text/javascript" src="../assets/xm-select/dist/xm-select.js"></script>
+<script type="text/javascript" src="../assets/js/jquery.min.js"></script>
+
+<script type="text/javascript" src="../assets/js/xadmin.js"></script>
+
+
+
+
+
+<link rel="stylesheet" href="../assets/css/font.css">
+      
+     
+        <script src="../assets/lib/layui/layui.js" charset="utf-8"></script>
+        <link rel="stylesheet" href="../assets/lib/layui/css/layui.css">
+        <script type="text/javascript" src="../assets/js/xadmin.js"></script>
+    
+        <script type="text/javascript" src="../assets/js/jquery.min.js"></script>
+
+
+
+
+<link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+
+
+
+  </head>
+  <body>
+ 
+
+<!-- <div id="domains"></div> -->
+<!-- <button id="bt">获取选择的值</button> -->
+
+
+  
+
+
+
+
+
+
+
+
+
+
+     
+<div class="row">
+    
+<div class="col-md-offset-5" style="margin-left:70px">
+    <div  style="margin-top: 25px;">
+      <label class="form-label col-4"><span style="color:red">*</span>组名(Group)</label>
+        <div class="formControls col-4">
+            <input type="text" class="input-text form-control" value="{{.GroupName}}" name="creater"  id="groupname" required="required" readonly="readonly"  style="width: 250px" placeholder="默认"/>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+<div class="col-md-offset-4" style="margin-left:70px">
+    <div  style="margin-top: 25px;">
+      <label class="form-label col-2"><span style="color:red">*</span>多选域名</label>
+        <div class="formControls col-2">
+
+            <div id="domains"></div>
+
+
+
+
+        </div>
+    </div>
+
+</div>
+
+
+
+
+</div>
+
+
+                             
+
+
+<button id="domainPostB" type="button" style="text-align:right;position:absolute;
+      right: 0%;
+      bottom: 0%;
+      margin-bottom:5px;
+      margin-right:5px;
+      background-color: #4CAF50; /* Green */
+      border: none;
+      color: white;
+      padding: 8px 15px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 12px;
+      cursor: pointer;">确认创建</button>
+                            
+
+</body>
+
+
+
+
+
+<script>
+  var domains
+
+  // $.get("/api/domain/getdomins",function(data))
+
+  window.onload = function(){
+
+
+    domains = xmSelect.render({
+    el: '#domains',
+    empty: '呀, 没有数据呢',
+    tips: '目前的域名:',
+    filterable: true,
+    // direction: 'up',
+    searchTips: '搜索域名',
+    language: 'zn',
+    theme: {
+    color: '#1cbbb4',
+  },
+    style: {
+    // marginLeft: '200px',
+    width:'250px',
+    borderRadius: '40px',
+    height: '35px',
+
+  },
+  template({ item, sels, name, value }){
+    return item.name  + '<span style="position: absolute; right: 10px; color: #8799a3">'+value+'</span>' 
+  },
+  prop: {
+    name: 'value',
+  },
+    // data: dolists
+    data: [
+    // {name: '水果', value: 1, showname:'123',selected: true }, //disabled: true
+    // {name: '蔬菜', value: 2, showname:'123',selected: true},
+    // {name: '桌子', value: 3, showname:'123',disabled: true},
+    {name: 'xx', value: 4,showname:'xx',},
+    ]
+  })
+
+
+
+
+    var dolists = []
+    $.get("/api/domain/getdomins",function(data){
+      if(data.code == 200){
+        layui.layer.msg("获取域名成功!",{time: 500})
+       
+        for (var i=0;i<data.data.length;i++){
+            
+            // alert(data.data[i]["Domain"])
+            // alert(typeof(data.data[i]["Domain"]))
+            var sigdic = {"name":data.data[i]["Domain"],"value":data.data[i]["Perdomk"]}
+            dolists.push(sigdic)
+        }
+
+        // alert(JSON.stringify(dolists))
+
+
+
+    domains = xmSelect.render({
+    el: '#domains',
+    empty: '呀, 没有数据呢',
+    tips: '目前的域名:',
+    filterable: true,
+    // direction: 'up',
+    searchTips: '搜索域名',
+    language: 'zn',
+    theme: {
+    color: '#1cbbb4',
+  },
+    style: {
+    // marginLeft: '200px',
+    width:'250px',
+    borderRadius: '40px',
+    height: '35px',
+
+  },
+  // template({ item, sels, name, value }){
+  //   return item.name  + '<span style="position: absolute; right: 10px; color: #8799a3">'+value+'</span>' 
+  // },
+  // prop: {
+  //   name: 'value',
+  // },
+    data: dolists
+  
+  })
+
+
+
+
+
+      }else{
+       layui.layer.msg("获取域名失败!")
+      }
+    })
+    
+ 
+
+  }
+
+
+
+
+ $("#domainPostB").click(function(){
+
+  var selectArr = domains.getValue("value");
+  var groupname = $("#groupname").val()
+
+
+ if (groupname.length == 0){
+      layui.layer.msg("组名不能为空!")
+      return 
+    }
+    if (selectArr.length == 0){
+      layui.layer.msg("域名不能为空!")
+      return
+    }
+
+    $.post("/api/domain/editPerGroup",{"groupname":groupname,"selectCon":selectArr.toString()},function(data){
+      if(data.code==200){
+        xadmin.close();
+        xadmin.father_reload();
+    
+      }else{
+        
+         layui.layer.msg(data.data)
+        return
+      }
+    })
+
+
+
+
+  })
+</script>
+
+
+
+
+
+
+</html>
+
+
+

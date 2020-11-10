@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>权限组选择</title>
+
+
+
+
+
+        <!-- / -->
+
+
+<link rel="stylesheet" href="../assets/css/font.css">
+      
+        <!-- <link rel="stylesheet" href="../assets/css/xadmin.css"> -->
+        <!-- <link rel="stylesheet" href="./css/theme5.css"> -->
+        <script src="../assets/lib/layui/layui.js" charset="utf-8"></script>
+        <script type="text/javascript" src="../assets/js/xadmin.js"></script>
+       <!--  <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>  -->
+        <script type="text/javascript" src="../assets/js/jquery.min.js"></script>
+
+ <link rel="stylesheet" href="../assets/css/multiple-select.min.css">
+        <!-- / -->
+
+
+ 
+  
+      <!-- <link rel="stylesheet" href="../assets/lib/layui/css/layui.css"> -->
+
+    <script src="../assets/js/jquery.min.js"  crossorigin="anonymous"></script>
+<script src="../assets/js/multiple-select.min.js"></script>
+
+  <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+
+  <!-- <script src="../assets/js/layui.js"></script> -->
+
+</head>
+<body>
+
+
+
+
+
+     
+<div class="row">
+    
+<div class="col-md-offset-5" style="margin-left:70px">
+    <div  style="margin-top: 25px;">
+      <label class="form-label col-4"><span style="color:red">*</span>组名(Group)</label>
+        <div class="formControls col-4">
+            <input type="text" class="input-text form-control" value="" name="creater"  id="groupname" required="required"  style="width: 250px" placeholder="默认"/>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+<div class="col-md-offset-4" style="margin-left:70px">
+    <div  style="margin-top: 25px;">
+      <label class="form-label col-2"><span style="color:red">*</span>多选域名</label>
+        <div class="formControls col-2">
+           
+                                <select multiple="multiple" name="domains"  class="domains"   style="width: 250px"  >
+                                    <option value="1" >www.blingabc.com</option>
+                                    <option value="2" >tutor.blingabc.com</option>
+                                    <option value="3" >autt.blingabc.com</option>
+                                    <option value="4" >c.blingabc.com</option>
+                                    <option value="5" >d.blingabc.com</option>
+                                    <option value="6" >e.blingabc.com</option>
+
+
+                                </select>
+
+        </div>
+    </div>
+
+</div>
+
+
+
+
+</div>
+
+
+                             
+                               <!-- 
+                                <select multiple="multiple">
+                                    <option value="www.baidu.com" onclick="changeColor()">www.baidu.com</option>
+                                    <option value="www.baidu1.com" onclick="changeColor()">www.baidu1.com</option>
+
+                                    <option value="www.baidu2.com" onclick="changeColor()">www.baidu2.com</option>
+
+                                    <option value="www.baidu3.com" onclick="changeColor()">www.baidu3.com</option>
+
+                                    <option value="www.baidu4.com" onclick="changeColor()">www.baidu4.com</option>
+
+                                    <option value="www.baidu5.com" onclick="changeColor()">www.baidu5.com</option>
+
+                                    <option value="www.baidu6.com" onclick="changeColor()" >www.baidu6.com</option>
+
+                                   
+                                </select>
+ -->
+                       
+              
+           
+
+
+
+
+           
+                              
+
+
+              
+
+
+
+
+        <!-- / -->
+
+
+<!-- 
+<div>
+    <button onclick="copyText()">复制文本</button>
+</div>
+ -->
+
+<button onclick="copyText()" type="button" style="text-align:right;position:absolute;
+  right: 0%;
+  bottom: 0%;
+  margin-bottom:5px;
+  margin-right:5px;
+background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 8px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    cursor: pointer;">确认创建</button>
+                            
+             
+
+
+
+
+<!-- <script>
+   window.onload = function () {
+                   $.get("/api/domain/getdomins",function(data){
+                    if (data.code==200){
+                      var res = data.data;
+                      var option = "";
+                      for (i = 0; i < res.length; i++) { 
+                          Perdomk = res[i]["Perdomk"]
+                          domain = res[i]["Domain"]
+                          // alert(domain)
+
+                          option += "<option value='"+Perdomk+"'>"+domain+"</option>"
+                          // $('select').append("<option value=\"www.baidu1111.com\" >www.baidu.com</option>");
+                          // $('select').multipleSelect()
+                          // $('select').multipleSelect('getSelects',[])
+
+                         
+                        }
+                        alert(option)
+                         $('.domains').append(option);
+                         $('select').multiselect('.domains');
+
+                    }else{
+                      alert("失败")
+                    }
+                   })
+            }
+
+</script> -->
+
+
+<script>
+// var $select = $('select')
+
+function copyText(){
+    // $('select').multipleSelect()
+
+    var selectCon = $('select').multipleSelect('getSelects');
+    console.log(selectCon)
+    console.log(selectCon.length)
+    // alert("select value" +$('select').multipleSelect('getSelects'))
+    var groupname = $("#groupname").val()
+    console.log(groupname)
+    console.log(groupname.length)
+    // alert(typeof(groupname))
+    // alert(JSON.stringify(selectCon))
+    // alert(selectCon[0])
+
+     // console.log(selectCon)
+
+
+
+    if (groupname.length == 0){
+      alert("组名不能为空!")
+      return 
+    }
+    if (selectCon.length == 0){
+      alert("域名不能为空!")
+      return
+    }
+// JSON.stringify(selectCon)
+    $.post("/api/domain/addPerGroup",{"groupname":groupname,"selectCon":selectCon.toString()},function(data){
+      if(data.code==200){
+        xadmin.close();
+        xadmin.father_reload();
+    
+      }else{
+        alert(data.data)
+        return
+      }
+    })
+
+     
+    
+}
+
+</script>
+
+
+
+<script>
+
+    $(function () {
+        $('select').multipleSelect({
+              placeholder: "请选择",
+              name: "ttt",
+              selectAll: true,   
+              minimumCountSelected: 50,
+              //开启搜索
+              filter: true,
+              multiple: true,
+              ellipsis: true,
+              multipleWidth: 300,
+              maxHeight: 350,
+              maxHeightUnit: "px",
+              minimumCountSelected: 5,
+              includeSelectAllOption: true,
+              enableClickableOptGroups: true,
+              enableCollapsibleOptGroups: true,
+        })
+    })
+</script>
+</body>
+</html>

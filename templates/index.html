@@ -1,0 +1,309 @@
+{{ define "index.html" }}
+
+
+{{ template "header" }}
+    <body class="index">
+        <!-- 顶部开始 -->
+        <div class="container">
+            <div class="logo">
+
+                <a href="#" onclick="redren()">😉vpnAudit管理</a>
+            </div>
+            <div class="left_open">
+                <a><i title="展开左侧栏" class="iconfont">&#xe699;</i></a>
+            </div>
+            <ul class="layui-nav left fast-add" lay-filter="">
+                <li class="layui-nav-item">
+                    <a href="javascript:;">+新增</a>
+                    <dl class="layui-nav-child">
+                        <!-- 二级菜单 -->
+                        <dd>
+                            <a onclick="xadmin.open('最大化','http://www.baidu.com','','',true)">
+                                <i class="iconfont">&#xe6a2;</i>弹出最大化</a></dd>
+                        <dd>
+                            <a onclick="xadmin.open('弹出自动宽高','http://www.baidu.com')">
+                                <i class="iconfont">&#xe6a8;</i>弹出自动宽高</a></dd>
+                        <dd>
+                            <a onclick="xadmin.open('弹出指定宽高','http://www.baidu.com',500,300)">
+                                <i class="iconfont">&#xe6a8;</i>弹出指定宽高</a></dd>
+                        <dd>
+                            <a onclick="xadmin.add_tab('在tab打开','member-list.html')">
+                                <i class="iconfont">&#xe6b8;</i>在tab打开</a></dd>
+                        <dd>
+                            <a onclick="xadmin.add_tab('在tab打开刷新','member-del.html',true)">
+                                <i class="iconfont">&#xe6b8;</i>在tab打开刷新</a></dd>
+                    </dl>
+                </li>
+            </ul>
+            <ul class="layui-nav right" lay-filter="">
+                <li class="layui-nav-item">
+                    <a href="javascript:;" id="usernameicon">{{ .username }}</a>
+                    <dl class="layui-nav-child">
+                        <!-- 二级菜单 -->
+                        <dd>
+                            <a onclick="xadmin.open('个人信息','http://www.baidu.com')">个人信息</a></dd>
+                        <dd>
+                            <a onclick="xadmin.open('切换帐号','http://www.baidu.com')">切换帐号</a></dd>
+                        <dd>
+                            <a href="http://localhost:8080/welcome">退出登录</a></dd>
+                    </dl>
+                </li>
+              <!--  <li class="layui-nav-item to-index">
+                   <a href="/">前台首页</a></li>
+				   -->
+            </ul>
+        </div>
+        <!-- 顶部结束 -->
+        <!-- 中部开始 -->
+        <!-- 左侧菜单开始 -->
+        <div class="left-nav">
+            <div id="side-nav">
+                <ul id="nav">
+                <!--    <li id="main_indexo">
+                      
+						
+						<a onclick="xadmin.add_tab('首页','welcome.html')">
+						
+                            <i class="iconfont left-nav-li" lay-tips="首页">&#xe6b8;</i>
+                            <cite>首页</cite>
+                            <i class="iconfont nav_right">&#xe697;</i></a>
+                       
+                    </li>
+              -->
+
+
+
+                    <li>
+                        <a href="javascript:;">
+                            <i class="iconfont left-nav-li" lay-tips="分类管理">&#xe6b5;</i>
+                            <cite>管理操作</cite>
+                            <i class="iconfont nav_right">&#xe697;</i></a>
+                        <ul class="sub-menu">
+                            <!--
+                            <li>
+                                <a onclick="xadmin.add_tab('日志追踪','http://localhost:8080/rendto/logtrack')">
+                                    <i class="iconfont">&#xe6a7;</i>
+                                    <cite>日志追踪</cite></a>
+                            </li>
+
+                          -->
+
+                          <li>
+                                <a onclick="xadmin.add_tab('vpn账号管理','/rendto/vpn',true)">
+                                    <i class="iconfont">&#xe6a7;</i>
+                                    <cite>vpn账号管理</cite></a>
+                            </li>
+
+
+
+                            <li>
+                                <a onclick="xadmin.add_tab('防火墙规则','/rendto/sqlbpoint')">
+                                    <i class="iconfont">&#xe6a7;</i>
+                                    <cite>防火墙规则</cite></a>
+                            </li>
+
+
+                            <li>
+                                <a onclick="xadmin.add_tab('vpn登录日志','/rendto/jsonmarshal',true)">
+                                    <i class="iconfont">&#xe6a7;</i>
+                                    <cite>vpn登录日志</cite></a>
+                            </li>
+
+                            <!--
+
+						    <li>
+                                <a onclick="xadmin.add_tab('会员删除','member-del.html')">
+                                    <i class="iconfont">&#xe6a7;</i>
+                                    <cite>会员删除</cite></a>
+                            </li>
+						  -->
+                         
+                       
+                        </ul>
+                    </li>
+
+
+                 <!--
+                    <li>
+                        <a href="javascript:;">
+                            <i class="iconfont left-nav-li" lay-tips="城市联动">&#xe723;</i>
+                            <cite>后端服务</cite>
+                            <i class="iconfont nav_right">&#xe697;</i></a>
+                        <ul class="sub-menu">
+                            <li>
+                                <a onclick="xadmin.add_tab('三级地区联动','city.html')">
+                                    <i class="iconfont">&#xe6a7;</i>
+                                    <cite>日志详情</cite></a>
+                            </li>
+							  <li>
+                                <a onclick="xadmin.add_tab('服务负载','welcome1.html')">
+                                    <i class="iconfont">&#xe6a7;</i>
+                                    <cite>服务负载</cite></a>
+                            </li>
+							  <li>
+                                <a onclick="xadmin.add_tab('操作历史','welcome1.html')">
+                                    <i class="iconfont">&#xe6a7;</i>
+                                    <cite>操作历史</cite></a>
+                            </li>
+
+                        </ul>
+                    </li>
+                -->
+
+
+
+
+
+
+
+
+                <li>
+                        <a href="javascript:;">
+                            <i class="iconfont left-nav-li" lay-tips="权限设置">&#xe6b4;</i>
+                            <cite>权限设置</cite>
+                            <i class="iconfont nav_right">&#xe697;</i></a>
+                        <ul class="sub-menu">
+
+
+                            
+                             <li>
+                                <a onclick="xadmin.add_tab('权限分组','/rendto/pertem')">
+                                    <i class="iconfont">&#xe6a7;</i>
+                                    <cite>权限分组</cite></a>
+                            </li>
+
+                            
+                            <!--
+                            <li>
+                                <a onclick="xadmin.add_tab('配置管理','https://fly.layui.com/extend/layedit/')">
+                                    <i class="iconfont">&#xe6a7;</i>
+                                    <cite>配置管理</cite></a>
+                            </li>
+                            <li>
+                                <a onclick="xadmin.add_tab('接口详情','https://www.baidu.com')">
+                                    <i class="iconfont">&#xe6a7;</i>
+                                    <cite>接口详情</cite></a>
+                            </li>
+                            
+                             <li>
+                                <a onclick="xadmin.add_tab('开发日志','log.html')">
+                                    <i class="iconfont">&#xe6a7;</i>
+                                    <cite>开发日志</cite></a>
+                            </li>
+                            
+
+                             <li>
+                                <a onclick="xadmin.add_tab('错误页面','error.html')">
+                                    <i class="iconfont">&#xe6a7;</i>
+                                    <cite>错误页面</cite></a>
+                            </li>
+                            -->
+                          
+                          
+                        </ul>
+                    </li>
+
+
+
+
+
+                    
+
+                    <li>
+                        <a href="javascript:;">
+                            <i class="iconfont left-nav-li" lay-tips="系统设置">&#xe6b4;</i>
+                            <cite>系统设置</cite>
+                            <i class="iconfont nav_right">&#xe697;</i></a>
+                        <ul class="sub-menu">
+
+
+							
+							 <li>
+                                <a onclick="xadmin.add_tab('用户管理','/rendto/admilis')">
+                                    <i class="iconfont">&#xe6a7;</i>
+                                    <cite>用户管理</cite></a>
+                            </li>
+
+							
+							<!--
+                            <li>
+                                <a onclick="xadmin.add_tab('配置管理','https://fly.layui.com/extend/layedit/')">
+                                    <i class="iconfont">&#xe6a7;</i>
+                                    <cite>配置管理</cite></a>
+                            </li>
+                            <li>
+                                <a onclick="xadmin.add_tab('接口详情','https://www.baidu.com')">
+                                    <i class="iconfont">&#xe6a7;</i>
+                                    <cite>接口详情</cite></a>
+                            </li>
+							
+							 <li>
+                                <a onclick="xadmin.add_tab('开发日志','log.html')">
+                                    <i class="iconfont">&#xe6a7;</i>
+                                    <cite>开发日志</cite></a>
+                            </li>
+							
+
+							 <li>
+                                <a onclick="xadmin.add_tab('错误页面','error.html')">
+                                    <i class="iconfont">&#xe6a7;</i>
+                                    <cite>错误页面</cite></a>
+                            </li>
+							-->
+                          
+                          
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- <div class="x-slide_left"></div> -->
+        <!-- 左侧菜单结束 -->
+        <!-- 右侧主体开始 -->
+        <div class="page-content">
+            <div class="layui-tab tab" lay-filter="xbs_tab" lay-allowclose="false">
+                <ul class="layui-tab-title">
+                    <li class="home">
+					<!-- 😁😄😇😯😕😊😂😅😈😐😠😀😃😆😉😑😬😡😮😥😨😟😳😢😣😦😩😱😵😴😤😧😰😲😶😷😍😝😙😎😖😞😛😋😘😭😔😒😜😗😚😌😪😏🙋🙅🙎😓🙌🙆😫🙍🙇 -->
+                        <i class="layui-icon">😈</i>首页信息❤</li></ul>
+                <div class="layui-unselect layui-form-select layui-form-selected" id="tab_right">
+                    <dl>
+                        <dd data-type="this">关闭当前</dd>
+                        <dd data-type="other">关闭其它</dd>
+                        <dd data-type="all">关闭全部</dd></dl>
+                </div>
+                <div class="layui-tab-content">
+                    <div class="layui-tab-item layui-show">
+                     <iframe src='/rendto/welcome' frameborder="0" scrolling="yes" class="x-iframe"></iframe>
+                    </div>
+                </div>
+                <div id="tab_show"></div>
+            </div>
+        </div>
+        <div class="page-content-bg"></div>
+        <style id="theme_style"></style>
+        <!-- 右侧主体结束 -->
+        <!-- 中部结束 -->
+     
+    </body>
+
+	
+		
+		
+</html>
+
+
+<script>
+    function  redren() {
+
+        var uicon = document.getElementById("usernameicon")
+        var  usernameicon  = uicon.innerText
+
+
+
+
+    }
+
+</script>
+
+{{ end }}

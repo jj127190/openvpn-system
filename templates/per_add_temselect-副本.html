@@ -1,0 +1,264 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>权限组选择</title>
+
+
+
+
+
+        <!-- / -->
+
+
+<link rel="stylesheet" href="../assets/css/font.css">
+      
+     
+        <script src="../assets/lib/layui/layui.js" charset="utf-8"></script>
+        <script type="text/javascript" src="../assets/js/xadmin.js"></script>
+    
+        <script type="text/javascript" src="../assets/js/jquery.min.js"></script>
+
+ <!-- <link rel="stylesheet" href="../assets/css/multiple-select.min.css"> -->
+        <!-- / -->
+
+
+ 
+  
+      <link rel="stylesheet" href="../assets/lib/layui/css/layui.css">
+
+    <script src="../assets/js/jquery.min.js"  crossorigin="anonymous"></script>
+<!-- <script src="../assets/js/multiple-select.min.js"></script> -->
+
+  <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+
+  <!-- <script src="../assets/js/layui.js"></script> -->
+
+</head>
+<body>
+
+
+
+
+
+     
+<div class="row">
+    
+<div class="col-md-offset-5" style="margin-left:70px">
+    <div  style="margin-top: 25px;">
+      <label class="form-label col-4"><span style="color:red">*</span>组名(Group)</label>
+        <div class="formControls col-4">
+            <input type="text" class="input-text form-control" value="" name="creater"  id="groupname" required="required"  style="width: 250px" placeholder="默认"/>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+<div class="col-md-offset-4" style="margin-left:70px">
+    <div  style="margin-top: 25px;">
+      <label class="form-label col-2"><span style="color:red">*</span>多选域名</label>
+        <div class="formControls col-2">
+           
+                           
+<!-- 
+
+            <select multiple="multiple" lay-filter="test" style="width:250px" id="myselectdg">
+					
+					
+						<option value="2">tutor.blingabc.com</option>
+						<option value="3">autt.blingabc.com</option>
+				
+					</select>
+ -->
+
+
+          <div class="layui-form layui-form-pane" action="">
+                <div class="layui-form-item" style="margin-left:-110px;width:360px">
+                  
+                  <div class="layui-input-block">
+                    <select multiple="multiple" lay-filter="test"  id="myselectdg">
+                      <option value=""></option>
+                  
+                    </select>
+                  </div>
+                </div>
+
+          </div>
+
+
+
+
+        </div>
+    </div>
+
+</div>
+
+
+
+
+</div>
+
+
+                             
+
+
+<button onclick="copyText()" type="button" style="text-align:right;position:absolute;
+  right: 0%;
+  bottom: 0%;
+  margin-bottom:5px;
+  margin-right:5px;
+background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 8px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    cursor: pointer;">确认创建</button>
+                            
+             
+
+
+
+
+<script>
+// var $select = $('select')
+
+function copyText(){
+    // $('select').multipleSelect()
+
+    var selectCon = $('select').multipleSelect('getSelects');
+    console.log(selectCon)
+    console.log(selectCon.length)
+    // alert("select value" +$('select').multipleSelect('getSelects'))
+    var groupname = $("#groupname").val()
+    console.log(groupname)
+    console.log(groupname.length)
+    // alert(typeof(groupname))
+    // alert(JSON.stringify(selectCon))
+    // alert(selectCon[0])
+
+     // console.log(selectCon)
+
+
+
+    if (groupname.length == 0){
+      alert("组名不能为空!")
+      return 
+    }
+    if (selectCon.length == 0){
+      alert("域名不能为空!")
+      return
+    }
+// JSON.stringify(selectCon)
+    $.post("/api/domain/addPerGroup",{"groupname":groupname,"selectCon":selectCon.toString()},function(data){
+      if(data.code==200){
+        xadmin.close();
+        xadmin.father_reload();
+    
+      }else{
+        alert(data.data)
+        return
+      }
+    })
+
+     
+    
+}
+
+</script>
+
+
+
+<!-- <script src="../assets/lib/layui/layui.js" charset="utf-8"></script> -->
+<script type="text/javascript">
+		layui.config({
+			base: '../assets/layuiselect/js/',
+		})
+		layui.use(['multiSelect'],function() {
+			var $ = layui.jquery,form = layui.form,multiSelect = layui.multiSelect;
+			$('#get-val').click(function() {
+				var vals = [],
+					texts = [];
+				$('select[multiple] option:selected').each(function() {
+					vals.push($(this).val());
+					texts.push($(this).text());
+				})
+				console.dir(vals);
+				console.dir(texts);
+			})
+			form.on('select(test)',function(data){
+				console.dir(data);
+			})
+		});
+</script>
+
+
+
+
+<script>
+  window.onload= function(){
+    alert("权限组")
+    $.get("/api/domain/getdomins",function(data){
+      if(data.code==200){
+        alert("填充")
+        var opt =  ''
+       
+        for (var i=0;i<data.data.length;i++) {
+           opt = opt + '<option value="gg">' + data.data[i].Domain + '</option>'
+        }
+
+        $("#myselectdg").html(opt);
+        layui.form.render('select');
+
+      }else{
+        alert("填充不成功...")
+      }
+    })
+
+ 
+
+  }
+</script>
+
+
+
+
+<!-- <script>
+
+    $(function () {
+        $('select').multipleSelect({
+              placeholder: "请选择",
+              name: "ttt",
+              selectAll: true,   
+              minimumCountSelected: 50,
+              //开启搜索
+              filter: true,
+              multiple: true,
+              ellipsis: true,
+              multipleWidth: 300,
+              maxHeight: 350,
+              maxHeightUnit: "px",
+              minimumCountSelected: 5,
+              includeSelectAllOption: true,
+              enableClickableOptGroups: true,
+              enableCollapsibleOptGroups: true,
+        })
+    })
+</script> -->
+</body>
+</html>
+
+
+
+<!-- $("#input_DomainGroup").html(opts); -->
+                    <!-- // form.render('select');//需要渲染一下 -->
+                    <!-- layui.form.render('select'); -->

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<script type="text/javascript" src="../assets/xm-select/dist/xm-select.js"></script>
+<script type="text/javascript" src="../assets/js/jquery.min.js"></script>
+
+  </head>
+  <body>
+ 
+
+ <div id="domains"></div>
+<button id="bt">获取选择的值</button>
+
+<script>
+
+  $("#bt").click(function(){
+    var selectArr = domains.getValue();
+    alert(selectArr[1].name)
+  })
+  
+
+
+</script>
+  
+
+
+<script>
+    var domains = xmSelect.render({
+    el: '#domains',
+    empty: '呀, 没有数据呢',
+    tips: '你喜欢什么水果呢?',
+    filterable: true,
+    // direction: 'up',
+    searchTips: '你想吃什么水果吧',
+    language: 'zn',
+    theme: {
+    color: '#1cbbb4',
+  },
+    style: {
+    // marginLeft: '200px',
+    width:'250px',
+    borderRadius: '40px',
+    height: '35px',
+
+  },
+  template({ item, sels, name, value }){
+    return item.name  + '<span style="position: absolute; right: 10px; color: #8799a3">'+value+'</span>' 
+  },
+  prop: {
+    name: 'value',
+  },
+
+    data: [
+    {name: '水果', value: 1, showname:'123',selected: true, disabled: true},
+    {name: '蔬菜', value: 2, showname:'123',selected: true},
+    {name: '桌子', value: 3, showname:'123',disabled: true},
+    {name: '北京', value: 4,showname:'123',},
+    ]
+  })
+
+
+</script>
+
+  </body>
+</html>

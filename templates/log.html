@@ -1,0 +1,83 @@
+{{ define "log.html" }}
+
+{{ template "header" }}
+    <body>
+        <div class="x-nav">
+          <span class="layui-breadcrumb">
+            <a href="">首页</a>
+            <a href="">演示</a>
+            <a>
+              <cite>导航元素</cite></a>
+          </span>
+          <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right" onclick="location.reload()" title="刷新">
+            <i class="layui-icon layui-icon-refresh" style="line-height:30px"></i></a>
+        </div>
+        <div class="layui-fluid">
+            <div class="layui-row layui-col-space15">
+                <div class="layui-col-md12">
+                    <div class="layui-card">
+                        <div class="layui-card-header">
+                          更新日志
+                        </div>
+                        <div class="layui-card-body ">
+                          <ul class="layui-timeline">
+                            <li class="layui-timeline-item">
+                              <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
+                              <div class="layui-timeline-content layui-text">
+                                <h3 class="layui-timeline-title">2020-01-13</h3>
+                                <p>
+                                  搭建x-admin;调整后端页面 <br>  
+
+                                  判断使用gin或者django进行后台管理<br>
+
+                                
+                                </p>
+                              </div>
+                            </li>
+                            <li class="layui-timeline-item">
+                              <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
+                              <div class="layui-timeline-content layui-text">
+                                <h3 class="layui-timeline-title">loading...</h3>
+                                <p>loading.................<br>
+									loading.................<br>
+									loading.................<br>
+									loading.................</p>
+                              </div>
+                            </li>
+                            <li class="layui-timeline-item">
+                              <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
+                              <div class="layui-timeline-content layui-text">
+                                <h3 class="layui-timeline-title">loading</h3>
+                                <p>
+                                  loading
+                                </p>
+                              </div>
+                            </li>
+                            <li class="layui-timeline-item">
+                              <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
+                              <div class="layui-timeline-content layui-text">
+                                <h3 class="layui-timeline-title">loading</h3>
+                                <p>
+									loading<br>
+                                </p>
+                              </div>
+                            </li>
+                            <li class="layui-timeline-item">
+                              <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
+                              <div class="layui-timeline-content layui-text">
+                                <h3 class="layui-timeline-title">loading</h3>
+                                <p>
+                                  loading<br>
+                                </p>
+                              </div>
+                            </li>
+                          </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </body>
+          </html>
+
+{{ end }}
