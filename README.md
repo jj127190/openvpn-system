@@ -52,13 +52,13 @@ goroutine
    
 
 ### 登录
-![Image text](../assets/images/login.png)
+![Image text](./assets/images/login.png)
 
 ### 登录错误
-![Image text](../assets/images/loginerr.png)
+![Image text](./assets/images/loginerr.png)
 
 ### 账号操作界面
-![Image text](../assets/images/vpn.png)
+![Image text](./assets/images/vpn.png)
 
 ### 域名操作
-![Image text](../assets/images/domains.png)
+![Image text](./assets/images/domains.png)
