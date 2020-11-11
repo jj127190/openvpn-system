@@ -20,7 +20,7 @@ func main() {
 	Rcontext := gin.Default()
 	Rcontext.LoadHTMLGlob("templates/*")
 	Rcontext.Static("/assets", "./assets")
-	router.Distribute(Rcontext) //事项分支...
+	router.Distribute(Rcontext) //分支...
 	Rcontext.Run(share.Conf.Run.StartPort)
 
 }

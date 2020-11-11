@@ -83,7 +83,7 @@ type PermissionDisgroup struct {
 func init() {
 
 	//gorm
-	gdb, err := gorm.Open("mysql", "root:8927126@(172.30.0.196:22809)/VpnAudit?charset=utf8&parseTime=True&loc=Local")
+	gdb, err := gorm.Open("mysql", "root:123123@(1.2.3.4.5:22111)/vpn-system?charset=utf8&parseTime=True&loc=Local")
 	if err != nil {
 		fmt.Println("gorm conn is fail...")
 		panic(err)
@@ -192,8 +192,6 @@ func fromChanLogoutcon() {
 
 	}
 
-	fmt.Println("从五秒里面出来了？")
-
 }
 
 //登陆
@@ -289,8 +287,11 @@ func main() {
 	go fromChanLogoutcon()
 
 	defer GDB.Close()
+
 	conLoginChan = make(chan string, 10)
+
 	t, err := tail.TailFile("openvpn.log", tail.Config{Follow: true, Location: &tail.SeekInfo{Offset: 0, Whence: os.SEEK_END}})
+
 	if err != nil {
 		fmt.Println("文件读取失败:", err)
 	}

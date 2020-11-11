@@ -1,8 +1,8 @@
 [Run]
-StartPort = ":8080"
+StartPort = ":80"
 
 [LogInfo]
-LogName = "VpnAudit.log"
+LogName = "vpn-system.log"
 LogPath = "./log/" 
 
 # LogStat  on/off  default on

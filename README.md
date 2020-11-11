@@ -38,6 +38,7 @@ goroutine
    、对账号的增删改查等
    、平台本身的操作记录
    、定时获取阿里云的域名，添加到domains表中
+   
    、openvpn与权限组绑定，权限组与domains表的域名绑定
    、创建openvpn的账号,并添加到openvpn配置文件,若是账号密码的形式，则重启openvpn，若是秘钥的形式，则无需重启
 
