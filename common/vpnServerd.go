@@ -90,7 +90,7 @@ type PermissionDisgroup struct {
 func init() {
 
 	//gorm
-	gdb, err := gorm.Open("mysql", "root:8927126@(172.30.0.196:22809)/VpnAudit?charset=utf8&parseTime=True&loc=Local")
+	gdb, err := gorm.Open("mysql", "root:123123@(1.2.3.4:3306)/VpnAudit?charset=utf8&parseTime=True&loc=Local")
 	if err != nil {
 		fmt.Println("gorm conn is fail...", err)
 		panic(err)
@@ -132,7 +132,7 @@ func GetHostMsg() (error, string, string) {
 		fmt.Println(err)
 		return err, "", ""
 	}
-	conn, err := net.DialTimeout("tcp", "172.30.0.230:80", time.Second*5)
+	conn, err := net.DialTimeout("tcp", "1.2.3.4:80123", time.Second*5)
 	defer conn.Close()
 	if err != nil {
 		fmt.Println(err)
@@ -313,7 +313,7 @@ func CreateIptablesRuls(res []string) {
 	// fmt.Println("currips....", currips)
 	for _, val := range currips {
 
-		// iptables -I FORWARD 1 -s 10.12.0.6 -i tun0 -d 172.30.0.196 -j ACCEPT
+		// iptables -I FORWARD 1 -s 10.12.0.6 -i tun0 -d 172.1.1.1 -j ACCEPT
 
 		cmdIptables := fmt.Sprintf("iptables -I FORWARD 1 -s  %s -i tun0 -d %s -j ACCEPT", res[0], val)
 		cmd := exec.Command("/bin/sh", "-c", cmdIptables)
