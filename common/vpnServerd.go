@@ -414,6 +414,7 @@ func CleanLoginmsg() {
 
 		err, currFilecon := ReadLine("openvpn-status.log")
 		if err != nil {
+			
 			fmt.Println(err)
 			continue //后面再处理,启动服务调用
 		}
